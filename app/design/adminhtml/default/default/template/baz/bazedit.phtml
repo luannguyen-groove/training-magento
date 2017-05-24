@@ -1,0 +1,247 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>jQuery.noConflict();</script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://ilikenwf.github.io/jquery.mjs.nestedSortable.js"></script>
+
+<?php echo $this->getChildHtml(); ?>
+<?php
+    $categories = $this->getCategoriesArray();
+//    var_dump($categories);
+?>
+
+<style type="text/css">
+
+    a,a:visited {
+        color: #4183C4;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    pre,code {
+        font-size: 12px;
+    }
+
+    pre {
+        width: 100%;
+        overflow: auto;
+    }
+
+    small {
+        font-size: 90%;
+    }
+
+    small code {
+        font-size: 11px;
+    }
+
+    .placeholder {
+        outline: 1px dashed #4183C4;
+    }
+
+    .mjs-nestedSortable-error {
+        background: #fbe3e4;
+        border-color: transparent;
+    }
+
+    #tree {
+        /*width: 550px;*/
+        margin: 0;
+    }
+
+    ol {
+        max-width: 450px;
+        padding-left: 25px;
+    }
+
+    ol.sortable,ol.sortable ol {
+        list-style-type: none;
+    }
+
+    .sortable li div {
+        border: 1px solid #d4d4d4;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        cursor: move;
+        border-color: #D4D4D4 #D4D4D4 #BCBCBC;
+        margin: 0;
+        padding: 3px;
+    }
+
+    li.mjs-nestedSortable-collapsed.mjs-nestedSortable-hovering div {
+        border-color: #999;
+    }
+
+    .disclose, .expandEditor {
+        cursor: pointer;
+        width: 20px;
+        display: none;
+    }
+
+    .sortable li.mjs-nestedSortable-collapsed > ol {
+        display: none;
+    }
+
+    .sortable li.mjs-nestedSortable-branch > div > .disclose {
+        display: inline-block;
+    }
+
+    .sortable span.ui-icon {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menuDiv {
+        background: #EBEBEB;
+    }
+
+    .menuEdit {
+        background: #FFF;
+    }
+
+    .itemTitle {
+        vertical-align: middle;
+        cursor: pointer;
+    }
+
+    .deleteMenu {
+        float: right;
+        cursor: pointer;
+    }
+
+    h1 {
+        font-size: 2em;
+        margin-bottom: 0;
+    }
+
+    h2 {
+        font-size: 1.2em;
+        font-weight: 400;
+        font-style: italic;
+        margin-top: .2em;
+        margin-bottom: 1.5em;
+    }
+
+    h3 {
+        font-size: 1em;
+        margin: 1em 0 .3em;
+    }
+
+    p,ol,ul,pre,form {
+        margin-top: 0;
+        margin-bottom: 1em;
+    }
+
+    dl {
+        margin: 0;
+    }
+
+    dd {
+        margin: 0;
+        padding: 0 0 0 1.5em;
+    }
+
+    code {
+        background: #e5e5e5;
+    }
+
+    input {
+        vertical-align: text-bottom;
+    }
+
+    .notice {
+        color: #c33;
+    }
+
+    .sortable {
+        width: 48%;
+        margin: 1%;
+        float: left;
+    }
+</style>
+
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Edit Baz') ?></h4>
+    </div>
+    <fieldset id="role_resources">
+        <span class="field-row">
+            <label for="all"><?php echo $this->__('Menu Title') ?></label>
+            <input type="text" name="title" id="title" value="">
+        </span>
+        <span class="field-row">
+            <label for="all"><?php echo $this->__('Category') ?></label>
+            <input type="text" name="category" id="category" value="">
+        </span>
+        <div id="tree" style="margin-left: 150px;">
+            <ol id="sortable1" class="sortable">
+                <?php
+                    $current_level = 0;
+                ?>
+                <?php foreach ($categories as $cate): ?>
+                    <?php if($current_level == $cate["level"] ): ?>
+                    <li><div><?= $cate["name"]; ?></div>
+                    <?php elseif($current_level < $cate["level"]): ?>
+                        <?php
+                            $current_level++;
+                        ?>
+                        <ol>
+                            <li><div><?= $cate["name"]; ?></div>
+                    <?php elseif($current_level > $cate["level"]): ?>
+                        <?php
+                            $current_level--;
+                        ?>
+                        </li></ol>
+                        <li><div><?= $cate["name"]; ?></div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+                    <?php for ($i = 0; $i < $current_level; $i++): ?>
+                        </li></ol>
+                    <?php endfor; ?>
+            </ol>
+
+            <ol id="sortable2" class="sortable">
+                    <?php
+                    $current_level = 0;
+                    ?>
+                    <?php foreach ($categories as $cate): ?>
+                    <?php if($current_level == $cate["level"] ): ?>
+                    <li><div><?= $cate["name"]; ?></div>
+                        <?php elseif($current_level < $cate["level"]): ?>
+                        <?php
+                        $current_level++;
+                        ?>
+                        <ol>
+                            <li><div><?= $cate["name"]; ?></div>
+                                <?php elseif($current_level > $cate["level"]): ?>
+                                <?php
+                                $current_level--;
+                                ?>
+                            </li></ol>
+                    <li><div><?= $cate["name"]; ?></div>
+                        <?php endif; ?>
+                        <?php endforeach; ?>
+                        <?php for ($i = 0; $i < $current_level; $i++): ?>
+                    </li></ol>
+            <?php endfor; ?>
+                </ol>
+        </div>
+    </fieldset>
+</div>
+
+<script>
+
+    jQuery(document).ready(function(){
+        jQuery('#sortable1, #sortable2').nestedSortable({
+            connectWith: ".sortable",
+            handle: 'div',
+            items: 'li',
+            toleranceElement: '> div'
+        });
+    });
+</script>

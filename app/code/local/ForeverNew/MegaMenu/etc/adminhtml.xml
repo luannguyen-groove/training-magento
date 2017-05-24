@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <forevernew_megamenu module="forevernew_megamenu" translate="title">
+            <title>ForeverNew Mega Menu</title>
+            <sort_order>100</sort_order>
+            <action>adminhtml/index</action>
+        </forevernew_megamenu>
+    </menu>
+</config>
