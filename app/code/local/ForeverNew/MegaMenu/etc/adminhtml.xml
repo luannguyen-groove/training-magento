@@ -2,9 +2,33 @@
 <config>
     <menu>
         <forevernew_megamenu module="forevernew_megamenu" translate="title">
-            <title>ForeverNew Mega Menu</title>
+            <title>ForeverNew</title>
             <sort_order>100</sort_order>
-            <action>adminhtml/index</action>
+            <children>
+                <custommenu translate="title" module="forevernew_megamenu">
+                    <title>Mega Menu</title>
+                    <sort_order>1</sort_order>
+            		<action>adminhtml/custommenu</action>
+                </custommenu>
+            </children>
         </forevernew_megamenu>
     </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <custom translate="title" module="forevernew_megamenu">
+                        <title>ForeverNew</title>
+                        <sort_order>-100</sort_order>
+                        <children>
+                            <custommenu translate="title">
+                                <title>Mega Menu</title>
+                                <sort_order>1</sort_order>
+                            </custommenu>
+                        </children>
+                    </custom>
+                </children>
+            </admin>
+        </resources>
+    </acl>
 </config>

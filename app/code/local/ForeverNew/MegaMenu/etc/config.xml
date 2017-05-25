@@ -6,25 +6,30 @@
         </ForeverNew_MegaMenu>
     </modules>
     <global>
-        <blocks>
-            <forevernew_megamenu>
-                <class>ForeverNew_MegaMenu_Block</class>
-            </forevernew_megamenu>
-            <forevernew_megamenu_adminhtml>
-                <class>ForeverNew_MegaMenu_Block_Adminhtml</class>
-            </forevernew_megamenu_adminhtml>
-        </blocks>
-        <models>
-            <forevernew_megamenu>
-                <class>ForeverNew_MegaMenu_Model</class>
-            </forevernew_megamenu>
-        </models>
         <helpers>
             <forevernew_megamenu>
                 <class>ForeverNew_MegaMenu_Helper</class>
             </forevernew_megamenu>
         </helpers>
-        <!--
+        <blocks>
+            <forevernew_megamenu>
+                <class>ForeverNew_MegaMenu_Block</class>
+            </forevernew_megamenu>
+        </blocks>
+        <models>
+            <forevernew_megamenu>
+                <class>ForeverNew_MegaMenu_Model</class>
+                <resourceModel>forevernew_megamenu_mysql4</resourceModel>
+            </forevernew_megamenu>
+            <forevernew_megamenu_mysql4>
+                <class>ForeverNew_MageMenu_Model_Mysql4</class>
+                <entities>
+                    <custommenu>
+                        <table>forevernew_megamenu_custommenu</table>
+                    </custommenu>
+                </entities>
+            </forevernew_megamenu_mysql4>
+        </models>
         <resources>
             <forevernew_megamenu_setup>
                 <setup>
@@ -32,7 +37,6 @@
                 </setup>
             </forevernew_megamenu_setup>
         </resources>
-        -->
         <!--
         <events>
             <catalog_product_load_after>
@@ -77,6 +81,16 @@
             </adminhtml>
         </routers>
     </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <forevernew_megamenu>
+                    <file>forevernew/megamenu.xml</file>
+                </forevernew_megamenu>
+            </updates>
+        </layout>
+    </adminhtml>
     <!--
     <crontab>
         <jobs>

@@ -28,10 +28,10 @@
 <config>
     <global>
         <install>
-            <date><![CDATA[Fri, 05 May 2017 09:25:53 +0000]]></date>
+            <date><![CDATA[Wed, 24 May 2017 15:42:39 +0000]]></date>
         </install>
         <crypt>
-            <key><![CDATA[aa830f251f3377a6c629f9d31bd6ee22]]></key>
+            <key><![CDATA[526e72cb14498f33ca461c7a86e973fd]]></key>
         </crypt>
         <disable_local_modules>false</disable_local_modules>
         <resources>
@@ -43,7 +43,7 @@
                     <host><![CDATA[localhost]]></host>
                     <username><![CDATA[root]]></username>
                     <password><![CDATA[]]></password>
-                    <dbname><![CDATA[magento_training]]></dbname>
+                    <dbname><![CDATA[db_magento]]></dbname>
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
                     <model><![CDATA[mysql4]]></model>
                     <type><![CDATA[pdo_mysql]]></type>

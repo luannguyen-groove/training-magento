@@ -18,7 +18,7 @@
  * @generator   http://www.mgt-commerce.com/kickstarter/ Mgt Kickstarter
  */
 
-class ForeverNew_MegaMenu_TestController extends Mage_Core_Controller_Front_Action
+class ForeverNew_MegaMenu_IndexController extends Mage_Core_Controller_Front_Action
 {
     public function testAction()
     {
