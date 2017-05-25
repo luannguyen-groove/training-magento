@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_megamenu_index>
+        <reference name="content">
+            <block type="forevernew_custom/adminhtml_megamenu" name="forevernew_custom_megamenu" />
+        </reference>
+    </adminhtml_megamenu_index>
+</layout>

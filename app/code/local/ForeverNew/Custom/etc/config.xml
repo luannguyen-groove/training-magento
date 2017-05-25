@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <ForeverNew_Custom>
+            <version>1.0.0</version>
+        </ForeverNew_Custom>
+    </modules>
+
+    <global>
+        <helpers>
+            <forevernew_custom>
+                <!-- This is where we define our helper directory -->
+                <class>ForeverNew_Custom_Helper</class>
+            </forevernew_custom>
+        </helpers>
+
+        <blocks>
+            <forevernew_custom>
+                <!-- Set a block definition and lookup directory -->
+                <class>ForeverNew_Custom_Block</class>
+            </forevernew_custom>
+        </blocks>
+
+        <models>
+            <forevernew_custom>
+                <!-- This is where we define our model directory -->
+                <class>ForeverNew_Custom_Model</class>
+                <!-- Define a resource to create a custom table -->
+                <resourceModel>forevernew_custom_mysql4</resourceModel>
+            </forevernew_custom>
+
+            <!-- Here's our resource model we'll use to create a database table -->
+            <forevernew_custom_mysql4>
+                <class>ForeverNew_Custom_Model_Mysql4</class>
+                <entities>
+                    <!-- Let's define our table, we'll call it with the baz name, but the real table is foo_bar_baz -->
+                    <!-- After we define our entity, we can call it with our model by calling foo_bar/baz -->
+                    <megamenu>
+                        <table>forevernew_custom_megamenu</table>
+                    </megamenu>
+                </entities>
+            </forevernew_custom_mysql4>
+        </models>
+
+        <!-- And finally we define our resource setup script -->
+        <resources>
+            <forevernew_custom_setup>
+                <setup>
+                    <module>ForeverNew_Custom</module>
+                </setup>
+            </forevernew_custom_setup>
+        </resources>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <!-- This is how we load our Adminhtml controllers -->
+                    <modules>
+                        <ForeverNew_Custom before="Mage_Adminhtml">ForeverNew_Custom_Adminhtml</ForeverNew_Custom>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <forevernew_custom>
+                    <!--
+                    We again keep a nice naming convention and make our module upgrade proof by placing it in a separate folder
+                    - Since we are in the adminhtml node, this will look for the XML file in the app/design/adminhtml/default/default root folder
+                    -->
+                    <file>forevernew/custom.xml</file>
+                </forevernew_custom>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>

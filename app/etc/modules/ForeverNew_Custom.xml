@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <config>
      <modules>
-        <ForeverNew_MegaMenu>
+        <ForeverNew_Custom>
             <active>true</active>
             <codePool>local</codePool>
-        </ForeverNew_MegaMenu>
+        </ForeverNew_Custom>
      </modules>
 </config>
